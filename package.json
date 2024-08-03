@@ -1,13 +1,13 @@
 {
-  "name": "node-kickoff",
-  "version": "1.0.0",
+  "name": "nodee-kickoff",
+  "version": "1.0.1",
   "description": "A CLI tool to quickly install commonly used node project packages",
   "main": "index.js",
   "bin": {
-    "node-kickoff": "./bin/index.js"
+    "nodee-kickoff": "./bin/index.js"
   },
   "scripts": {
-    "node-kickoff": "node ./bin/index.js"
+    "nodee-kickoff": "node ./bin/index.js"
   },
   "dependencies": {
     "colors": "^1.4.0",
@@ -15,16 +15,37 @@
   },
   "keywords": [
     "node",
-    "nodejs",
-    "quick",
-    "node-quick",
-    "node-install",
-    "node-quickinstaller",
-    "node-quick-installer",
-    "node-fast",
-    "fast",
-    "node-fast-installer"
+    "node-app",
+    "node-boilerplate",
+    "node-starter",
+    "node-template",
+    "node-setup",
+    "node-cli",
+    "node-tooling",
+    "node-scaffold",
+    "node-project-generator",
+    "node-project-setup",
+    "node-quick-start",
+    "node-bootstrapper",
+    "node-kickstart",
+    "node-init",
+    "node-dependency-manager",
+    "node-package-installer",
+    "node-project-initializer",
+    "frontend-tooling",
+    "web-development",
+    "javascript",
+    "npm",
+    "nodejs"
   ],
   "author": "Aayushmaan Soni",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aayushmaan-54/nodee-kickoff_NPM"
+  },
+"bugs": {
+    "url": "https://github.com/aayushmaan-54/nodee-kickoff_NPM/issues",
+    "homepage": "https://github.com/aayushmaan-54/nodee-kickoff_NPM/blob/main/README.md"
+  }
 }
