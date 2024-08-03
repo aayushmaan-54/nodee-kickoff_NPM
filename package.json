@@ -1,0 +1,30 @@
+{
+  "name": "node-kickoff",
+  "version": "1.0.0",
+  "description": "A CLI tool to quickly install commonly used node project packages",
+  "main": "index.js",
+  "bin": {
+    "node-kickoff": "./bin/index.js"
+  },
+  "scripts": {
+    "node-kickoff": "node ./bin/index.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.2.5"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "quick",
+    "node-quick",
+    "node-install",
+    "node-quickinstaller",
+    "node-quick-installer",
+    "node-fast",
+    "fast",
+    "node-fast-installer"
+  ],
+  "author": "Aayushmaan Soni",
+  "license": "ISC"
+}
