@@ -299,6 +299,7 @@ const packages = [
     ],
   },
   { name: 'typescript', type: 'dev' },
+  { name: 'concurrently', type: 'dev' },
   { name: 'ts-node', type: 'dev' },
   { name: 'husky', type: 'dev' },
   {
@@ -307,6 +308,7 @@ const packages = [
     externalDependencies: [
       { name: 'postcss', type: 'dev' },
       { name: 'autoprefixer', type: 'dev' },
+      { name: 'concurrently', type: 'dev' },
     ],
     postInstallScripts: ['npx tailwindcss init -p'],
     additionalLogs: [
@@ -329,6 +331,9 @@ const packages = [
         content: [
           "./index.html",
           "./src/**/*.{js,ts,jsx,tsx}",
+          "./views/**/*.ejs",
+          "./public/**/*.html",
+          "./public/**/*.js"
         ],
         theme: {
           extend: {},
@@ -546,7 +551,6 @@ async function promptForNPMPackages() {
 }
 
 
-
 async function updatePackageJson(selectedPackages) {
   const packageJsonPath = path.join(process.cwd(), 'package.json');
   let packageJson;
@@ -579,8 +583,22 @@ async function updatePackageJson(selectedPackages) {
     }
   });
 
+  const hasTailwind = selectedPackages.some(pkg => pkg.name === 'tailwindcss');
+  const hasNodemon = selectedPackages.some(pkg => pkg.name === 'nodemon');
+
+  if (hasTailwind && hasNodemon) {
+    packageJson.scripts = {
+      ...packageJson.scripts,
+      "start": "node index.js",
+      "dev": "concurrently \"nodemon index.js\" \"npm run watch:css\"",
+      "watch:css": "tailwindcss -i ./src/index.css -o ./public/css/output.css --watch",
+      "build:css": "tailwindcss -i ./src/index.css -o ./public/css/output.css --minify"
+    };
+    console.log('Updated scripts for Tailwind CSS and Nodemon in package.json');
+  }
+
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
-  console.log('package.json has been updated with selected packages.');
+  console.log('package.json has been updated with selected packages and scripts.');
 
   try {
     await installPackages(selectedPackages);
